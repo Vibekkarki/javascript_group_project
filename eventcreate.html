@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create Event</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" href="Assests/css/createevent.css">
+</head>
+<body>
+  <div class="calendar">
+    <h1>Select Event Date</h1>
+    <input type="text" id="calendarInput" placeholder="Select date">
+  </div>
+
+  <div class="time-slots" style="display: none;">
+    <h1>Select Time and Day</h1>
+    <div id="timeSlotsContainer"></div>
+  </div>
+
+  <div class="event-details" style="display: none;">
+    <h1>Event Details</h1>
+    <form id="eventForm">
+      <label for="eventName">Event Name:</label>
+      <input type="text" id="eventName" name="eventName" required><br>
+
+      <label for="eventDescription">Event Description:</label>
+      <textarea id="eventDescription" name="eventDescription" required></textarea><br>
+
+      <button type="submit" id="createEventBtn">Create Event</button>
+    </form>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="Assests/js/eventcreate-script.js"></script>
+</body>
+</html>
