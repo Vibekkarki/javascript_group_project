@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Create Event</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-  <link rel="stylesheet" href="Assests/css/createevent.css">
+  <link rel="stylesheet" href="Assests/css/eventcreate.css">
 </head>
 <body>
   <div class="calendar">
@@ -28,6 +28,12 @@
 
       <button type="submit" id="createEventBtn">Create Event</button>
     </form>
+  </div>
+
+  <div class="event-info" style="display: none;">
+    <h1>Event Created!</h1>
+    <div id="eventCardContainer"></div>
+    <button id="createAnotherBtn">Create Another Event</button>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
