@@ -9,7 +9,11 @@ $(document).ready(function() {
     // Function to display the create event section
     const showCreateEventSection = () => {
       $('.calendar').show();
-      $('.time-slots, .event-details, .event-info').hide();
+      $('#createAnotherBtn').hide();
+      if(eventCounter < 1){
+        $('.time-slots, .event-details, .event-info').hide();
+      }
+      
       resetForm();
     };
     // Initialize Flatpickr for date selection
@@ -77,6 +81,7 @@ $(document).ready(function() {
           // Show event creation success message
           $('.event-details').hide();
           $('.event-info').show();
+          $('#createAnotherBtn').show();
         }
       });
       // Create another event button click event
