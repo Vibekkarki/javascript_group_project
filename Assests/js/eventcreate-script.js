@@ -48,37 +48,50 @@ $(document).ready(function() {
   
     // Handle form submission
     $('#eventForm').submit(function(event) {
-      event.preventDefault();
-      const eventName = $('#eventName').val();
-      const eventDescription = $('#eventDescription').val();
-      const selectedDateTime = $('[name="selectedDateTime"]').val();
-  
-      // Validation check
-      if (eventName && eventDescription && selectedDateTime) {
-        // Display created event information in a card
-        const eventCardContainer = $('#eventCardContainer');
-        const eventCard = 
-        '<div class="event-card">' +
-        '<h2>Event ' + eventCounter + '</h2>' +
-        '<p><strong>Event Name:</strong> ' + eventName + '</p>' +
-        '<p><strong>Event Description:</strong> ' + eventDescription + '</p>' +
-        '<p><strong>Date and Time:</strong> ' + selectedDateTime + '</p>' +
-      '</div>';
-        eventCardContainer.append(eventCard);
-  
-        // Increment event counter for multiple events
-        eventCounter++;
-  
-        // Show event creation success message
-        $('.event-details').hide();
-        $('.event-info').show();
-      } else {
-        alert('Please fill in all fields!');
-      }
-    });
+        event.preventDefault();
+        const eventName = $('#eventName').val();
+        const eventDescription = $('#eventDescription').val();
+        const selectedDateTime = $('[name="selectedDateTime"]').val();
+    
+        // Validation check
+        if (eventName.length > 100 || eventDescription.length > 500) {
+          $('#errorMessages').html('<p class="error-message">Event name should be less than 100 characters and event details less than 500 characters.</p>');
+        } else if (!eventName || !eventDescription || !selectedDateTime) {
+          $('#errorMessages').html('<p class="error-message">Please fill in all fields!</p>');
+        } else {
+          $('#errorMessages').empty();
+    
+          const eventCardContainer = $('#eventCardContainer');
+          const eventCard =
+            '<div class="event-card">' +
+            '<h2>Event ' + eventCounter + '</h2>' +
+            '<p><strong>Event Name:</strong> ' + eventName + '</p>' +
+            '<p><strong>Event Description:</strong> ' + eventDescription + '</p>' +
+            '<p><strong>Date and Time:</strong> ' + selectedDateTime + '</p>' +
+            '</div>';
+          eventCardContainer.append(eventCard);
+    
+          // Increment event counter for multiple events
+          eventCounter++;
+    
+          // Show event creation success message
+          $('.event-details').hide();
+          $('.event-info').show();
+        }
+      });
       // Create another event button click event
     $('#createAnotherBtn').click(function() {
       showCreateEventSection();
     });
+    $('.gallery-item').hover(
+        function() {
+          $(this).find('img').css('transform', 'scale(1.1)');
+          $(this).find('before').css('opacity', '1');
+        },
+        function() {
+          $(this).find('img').css('transform', 'scale(1)');
+          $(this).find('before').css('opacity', '0');
+        }
+      );
   });
   

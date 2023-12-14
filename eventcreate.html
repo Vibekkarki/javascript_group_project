@@ -1,43 +1,277 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Create Event</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-  <link rel="stylesheet" href="Assests/css/eventcreate.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Group Project</title>
+    <link rel="stylesheet" href="Assests/css/homepage.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <style>
+input[type="text"],
+textarea {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin: 10px auto;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  display: block;
+}
+
+textarea {
+  min-height: 100px;
+  max-width: 578px;
+}
+
+button {
+  background: linear-gradient(to right, #45a049, #86c232);
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  margin: 10px auto; 
+  font-size: 16px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+  background: linear-gradient(to right, #86c232, #45a049);
+  transform: scale(1.05);
+}
+
+.calendar,
+.time-slots,
+.event-details,
+.event-info {
+  text-align: center;
+  width: 80%;
+  max-width: 600px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+}
+
+.time-slots {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.time-slot {
+  background-color: #45a049;
+  color: white;
+  padding: 10px 20px;
+  margin: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.time-slot:hover {
+  background-color: #86c232;
+}
+  .event-card {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+}
+
+.event-card h2 {
+  margin-top: 0;
+  font-size: 24px;
+  color: #333;
+}
+
+.event-card p {
+  margin-bottom: 10px;
+  color: #555;
+}
+
+.event-card strong {
+  color: #000;
+}
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  width: 200px;
+  height: 150px;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover:before {
+  opacity: 1;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.1);
+}
+.section-slot{
+    width: -webkit-fill-available;
+}
+.error-message {
+  color: #ff0000; 
+  margin-top: 5px;
+}
+  /* Media query for smaller screens */
+  @media only screen and (max-width: 600px) {
+    input[type="text"],
+  textarea {
+    width: calc(100% - 20px);
+    padding: 8px;
+    margin: 8px auto;
+  }
+
+  button {
+    padding: 10px 20px;
+    font-size: 14px;
+    margin: 8px auto;
+  }
+    .calendar,
+  .time-slots,
+  .event-details,
+  .event-info {
+    width: 90%;
+  }
+
+  .time-slot {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+    .event-card {
+    padding: 15px;
+    margin: 15px auto;
+    max-width: 90%;
+  }
+  
+  .event-card h2 {
+    font-size: 20px;
+  }
+  }
+  
+    </style>
 </head>
+
 <body>
-  <div class="calendar">
-    <h1>Select Event Date</h1>
-    <input type="text" id="calendarInput" placeholder="Select date">
-  </div>
 
-  <div class="time-slots" style="display: none;">
-    <h1>Select Time and Day</h1>
-    <div id="timeSlotsContainer"></div>
-  </div>
+    <div class="transbox">
+        <h1>We welcome you to</h1>
+        <h2 class="main-title">Event Booking System</h2>
+        <p>A place where everyone gets the desired...</p>
+        <div class="button-container">
+            <a href="index.html" class="button button1">Home</a>
+            <a href="#" class="button button2">Login</a>
+            <a href="#" class="button button3">Event Details</a>
+            <a href="#" class="button button4">Contact Us</a>
+            <a href="#" class="button button5">Booking</a>
+        </div>
+    </div>
 
-  <div class="event-details" style="display: none;">
-    <h1>Event Details</h1>
-    <form id="eventForm">
-      <label for="eventName">Event Name:</label>
-      <input type="text" id="eventName" name="eventName" required><br>
+    <div class="perbox">
+        <div class="centered">
+            <h3>Make memories out of events of your life which are never to be
+                forgotten...</h3>
+        </div>
+        <br><br>
+        <div class="expertise-section">
+            <div class="gallery">
+                <div class="gallery-item">
+                  <img src="https://static.toiimg.com/photo/73045588.cms.cms" alt="Event Image 1">
+                </div>
+                <div class="gallery-item">
+                  <img src="https://c1.wallpaperflare.com/preview/50/512/980/iocenters-meeting-room-kuwait-city.jpg" alt="Event Image 2">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://media1.fdncms.com/rochester/imager/u/zoom/10563058/choice_event3-7267764c7adb4986.jpg" alt="Event Image 2">
+                </div>
+                <div class="gallery-item">
+                  <img src="https://static.toiimg.com/photo/73045588.cms.cms" alt="Event Image 1">
+                </div>
+                <div class="gallery-item">
+                  <img src="https://c1.wallpaperflare.com/preview/50/512/980/iocenters-meeting-room-kuwait-city.jpg" alt="Event Image 2">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://media1.fdncms.com/rochester/imager/u/zoom/10563058/choice_event3-7267764c7adb4986.jpg" alt="Event Image 2">
+                </div>
+                <!-- Add more gallery items with images -->
+              </div>
+              
+            <h2>Create Event with us ....</h2>
+            <br>
+            <div class="event-info" style="display: none;">
+                <h1>Event Created!</h1>
+                <div id="eventCardContainer"></div>
+                <button id="createAnotherBtn">Create Another Event</button>
+              </div>
+            <div class="calendar">
+                <h1>Select Event Date</h1>
+                <input type="text" id="calendarInput" placeholder="Select date">
+              </div>
+            
+              <div class="time-slots" style="display: none;">
+                <h1 class="section-slot">Select Time Slots</h1>
+                <div id="timeSlotsContainer"></div>
+              </div>
+            
+              <div class="event-details" style="display: none;">
+                <h1 class="section-title">Event Details</h1>
+                <form id="eventForm">
+                  <div id="errorMessages"></div>
+                  <label for="eventName">Event Name:</label>
+                  <input type="text" id="eventName" name="eventName" ><br>
+            
+                  <label for="eventDescription">Event Description:</label>
+                  <textarea id="eventDescription" name="eventDescription" ></textarea><br>
+            
+                  <button type="submit" id="createEventBtn">Create Event</button>
+                </form>
+              </div>
+        </div>
 
-      <label for="eventDescription">Event Description:</label>
-      <textarea id="eventDescription" name="eventDescription" required></textarea><br>
+        <div class="centered">
+            <h2>Try giving us a chance; we wouldn't disappoint you...</h2>
+        </div>
+    </div>
 
-      <button type="submit" id="createEventBtn">Create Event</button>
-    </form>
-  </div>
-
-  <div class="event-info" style="display: none;">
-    <h1>Event Created!</h1>
-    <div id="eventCardContainer"></div>
-    <button id="createAnotherBtn">Create Another Event</button>
-  </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="Assests/js/eventcreate-script.js"></script>
+    <!-- <script src="Assests/js/homepage-script.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="Assests/js/eventcreate-script.js"></script>
 </body>
+
 </html>
