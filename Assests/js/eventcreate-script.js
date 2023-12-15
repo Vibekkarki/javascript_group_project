@@ -67,12 +67,12 @@ $(document).ready(function() {
     
           const eventCardContainer = $('#eventCardContainer');
           const eventCard =
-            '<div class="event-card">' +
-            '<h2>Event ' + eventCounter + '</h2>' +
-            '<p><strong>Event Name:</strong> ' + eventName + '</p>' +
-            '<p><strong>Event Description:</strong> ' + eventDescription + '</p>' +
-            '<p><strong>Date and Time:</strong> ' + selectedDateTime + '</p>' +
-            '</div>';
+          '<a href="payment.html"><div class="event-card">' +
+          '<h2>Event ' + eventCounter + '</h2>' +
+          '<p><strong>Event Name:</strong> ' + eventName + '</p>' +
+          '<p><strong>Event Description:</strong> ' + eventDescription + '</p>' +
+          '<p><strong>Date and Time:</strong> ' + selectedDateTime + '</p>' +
+          '</div></a>';
           eventCardContainer.append(eventCard);
     
           // Increment event counter for multiple events
